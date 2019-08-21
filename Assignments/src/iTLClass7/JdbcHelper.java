@@ -159,7 +159,36 @@ public class JdbcHelper {
 		}
 	}
 	
+  	public void processTransaction(){ 
 
+  		 
+ 		try { 
+ 			 
+ 			String sql1 = "delete from student where StudentId=201"; 
+ 			String sql2 = "delete from student where StudentId=202"; 
+ 			 
+ 			stmt = con.createStatement(); 
+ 			con.setAutoCommit(false); 
+ 			 
+ 			// Creating a Batch 
+ 			stmt.addBatch(sql1); 
+ 			stmt.addBatch(sql2); 
+ 			 
+ 			stmt.executeBatch(); 
+ 		//	con.rollback();
+ 			con.commit(); // Make Sure the batch is executed as a transaction 
+ 			System.out.println("==Transaction Processed=="); 
+ 		} catch (Exception e) { 
+ 			 
+ 			System.out.println("Some Exception: "+e); 
+ 			try { 
+ 				con.rollback(); 
+ 				System.out.println("DB Changes Roll Backed !!"); 
+ 			} catch (SQLException e1) { 
+ 				e1.printStackTrace(); 
+ 			}  
+ 		} 
+ 	} 
 
 		public void closeConnection(){
 

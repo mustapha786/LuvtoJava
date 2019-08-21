@@ -21,6 +21,7 @@ public class App {
           //helper.BrowseAll();
     //       helper.Delete(104);
 			helper.BrowseAll();
+			helper.processTransaction();
 		   	helper.closeConnection();
 		
 	}
