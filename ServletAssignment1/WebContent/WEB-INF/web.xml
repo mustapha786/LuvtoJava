@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>ServletAssignment1</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+    <servlet-name>MyServlet</servlet-name>
+    <servlet-class>co.servlet.Login</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyServlet</servlet-name>
+    <url-pattern>/Login1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MyServlet1</servlet-name>
+    <servlet-class>co.servlet.Testing</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MyServlet1</servlet-name>
+    <url-pattern>/Testing1</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>myFilter</filter-name>
+    <filter-class>co.servlet.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>myFilter</filter-name>
+    <url-pattern>/Login1</url-pattern>
+  </filter-mapping>
+</web-app>

@@ -1,4 +1,4 @@
-package co.khan.controller;
+package co.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,19 +11,17 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet Filter implementation class MyFilter
+ * Servlet Filter implementation class LoginFilter
  */
-@WebFilter("/MyFilter")
-public class MyFilter implements Filter {
+@WebFilter("/LoginFilter")
+public class LoginFilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public MyFilter() {
+    public LoginFilter() {
         // TODO Auto-generated constructor stub
     }
 
@@ -40,32 +38,30 @@ public class MyFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		// TODO Auto-generated method stub
 		// place your code here
-
-		// pass the request along the filter chain
-		//chain.doFilter(request, response);
 		System.out.println("We are in the filter");
 		response.setContentType("text/html"); 
 		PrintWriter out = response.getWriter();
-		out.print("<center><h3>==Pre Processing==</h3></center>");
+		//out.print("<center><h3>==Pre Processing==</h3></center>");
 		String uname = request.getParameter("TxtName");
 		System.out.println("Username:"+ uname);
 		
 		String password = request.getParameter("Password");
 		System.out.println("Password:"+password);
-	
-		 
 		
-		if(uname.isEmpty() || password.isEmpty()){
+		// pass the request along the filter chain
+		
+		if ( uname.isEmpty() || password.isEmpty() )
+		{
 			System.out.println("Hello!!! I am doing my job 1");
 			out.print("<center><h3>==Email or Password Missing==</h3></center>");
-		}else{
-			System.out.println("Hello!!! I am doing my job 2");
-			chain.doFilter(request, response); // Dispatches the request to corresponding Servlet (LoginServlet as in web.xml=file)
-			//RequestDispatcher dispatcher = request.getRequestDispatcher("Login");
-			//dispatcher.forward(request, response); 
+			RequestDispatcher dispatcher = request.getRequestDispatcher("Login.html");
+		    dispatcher.include(request, response); 
+	//		dispatcher.forward(request, response);
+			
 		}
-		
-		out.print("<center><h3>==Post Processing==</h3></center>");
+		else	
+			System.out.println("Hello -- I am sending to Login Page");
+		chain.doFilter(request, response);
 	}
 
 	/**
@@ -73,6 +69,7 @@ public class MyFilter implements Filter {
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
 		// TODO Auto-generated method stub
+		System.out.println("Login Filer is in init stage");
 	}
 
 }

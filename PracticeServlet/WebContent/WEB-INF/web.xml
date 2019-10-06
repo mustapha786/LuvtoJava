@@ -9,11 +9,14 @@
     <servlet-class>co.khan.controller.Login</servlet-class>
   </servlet>
   <filter>
-    <filter-name>MyFilter</filter-name>
+    <filter-name>myFilter</filter-name>
     <filter-class>co.khan.controller.MyFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>MyFilter</filter-name>
+    <filter-name>myFilter</filter-name>
     <url-pattern>/Login</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+	<dispatcher>FORWARD</dispatcher>
+	<dispatcher>INCLUDE</dispatcher>
   </filter-mapping>
 </web-app>
