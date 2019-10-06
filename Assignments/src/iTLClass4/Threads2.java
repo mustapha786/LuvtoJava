@@ -5,7 +5,9 @@ public class Threads2 implements Runnable
 public void run() 
 {  
 try 
-{   Thread.sleep(1000);  
+{   System.out.println("Hey I started Sleeping wait ");
+	Thread.sleep(1000);  
+	System.out.println("I woke up ");
 } catch (InterruptedException e) 
 {
    e.printStackTrace();

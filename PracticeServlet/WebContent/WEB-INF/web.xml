@@ -4,15 +4,16 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  <servlet-name>Login</servlet-name>
-  <servlet-class>co.khan.controller.Login</servlet-class>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>co.khan.controller.Login</servlet-class>
   </servlet>
-  
-  <servlet-mapping>
-  <servlet-name>Login</servlet-name>
-  <url-pattern>/Login</url-pattern>
-  </servlet-mapping>
-  
+  <filter>
+    <filter-name>MyFilter</filter-name>
+    <filter-class>co.khan.controller.MyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>MyFilter</filter-name>
+    <url-pattern>/Login</url-pattern>
+  </filter-mapping>
 </web-app>

@@ -31,6 +31,7 @@ public class iTLClass61 {
 		NodeList nList = ((org.w3c.dom.Document) document).getElementsByTagName("Student");
 		System.out.println("============================");
 		System.out.println("Length:"+nList.getLength());
+	//	System.out.println("All elements:" + nList);
 		 
 		for (int temp = 0; temp < nList.getLength(); temp++)
 		{
